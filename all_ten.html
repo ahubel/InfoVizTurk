@@ -1,0 +1,623 @@
+<head>
+    <meta charset="UTF-8" />
+    <title>SCF!</title>
+    <link rel="stylesheet" href="scf.css">
+    <script src="_js/jquery-1.11.0.min.js"></script>
+    <script src="http://code.highcharts.com/highcharts.js"></script>
+    <script src="http://code.highcharts.com/modules/heatmap.js"></script>
+    <script src="http://code.highcharts.com/modules/exporting.js"></script>
+</head>
+<body>
+
+<div id="ten_bars_div" style="display:inline-block;vertical-align:top;">
+    <div id="top_bigdiv" style="padding-left:10px;">
+        <div id="percentage_bars" style="display:inline-block;vertical-align:top;"></div>
+        <div id="volume_bars" style="display:inline-block;"></div>
+    </div>
+    <div id="bottom_bigdiv" style="margin-top: -20px;">
+        <div id="top_3_percentage_bars" style="display:inline-block;vertical-align:top;"></div>
+        <div id="top_3_volume_bars" style="display:inline-block;"></div>
+    </div>
+</div>
+<div id="heatmap" style="display:inline-block;"></div>
+
+<script>
+$(function () {
+    $('#percentage_bars').highcharts({
+        chart: {
+            type: 'bar',
+            width: 170,
+            height: 300
+            // align: 'top'
+        },
+        title: {
+            // text: 'SeeClickFix Adoption',
+            text: null
+        },
+        // subtitle: {
+        //     text: 'Percentage Share Gained By SeeClickFix: 2010-2012'
+        // },
+        xAxis: {
+            // categories: ["'10", "'11", "'12"]
+            // categories: [' '],
+            // categories: [
+            //     'Graffiti',
+            //     // 'Illegal Dumping',
+            //     'Street Sweeping',
+            //     'Street Lights',
+            //     'Drainage',
+            //     // 'Electrical',
+            //     'Road Repair',
+            //     // 'Building Maintenance',
+            //     'Vegetation Control',
+            //     'Survey'
+            //     ],
+
+
+            categories: [
+                'Vegetation Control',
+                'Survey',
+                'Street Lights',
+                'Drainage',
+                'Road Repair',
+                'Graffiti',
+                'Street Sweeping'
+                ],
+            lineColor: 'transparent',
+            tickColor: 'transparent',
+            title: {
+                text: null
+            },
+            // labels: {
+            //     enabled: false
+            // }
+        },
+        yAxis: {
+            min: 0,
+            max: 100,
+            minorTickInterval: 25,
+            minorGridLineDashStyle: 'shortdot',
+            // showFirstLabel: false,
+            // labels: {
+            //     step: 4
+            // },
+            // minorTickColor: "#FCFCFC",
+            // minorTickLength: 0,
+            title: {
+                text: null
+                // ,
+                // align: 'high'
+            },
+            gridLineColor: 'transparent',
+            labels: {
+                enabled: true
+            },
+            opposite: true
+
+        },
+        tooltip: {
+            enabled: true,
+            valueSuffix: "%"
+            // valueSuffix: ' millions'
+        },
+        // plotOptions: {
+        //     bar: {
+        //         dataLabels: {
+        //             enabled: true
+        //         }
+        //     }
+        // },
+        legend: {
+            enabled: false,
+            // layout: 'vertical',
+            // align: 'right',
+            // verticalAlign: 'top',
+            // x: -40,
+            // y: 100,
+            // floating: true,
+            // borderWidth: 1,
+            // backgroundColor: ((Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'),
+            // shadow: true
+        },
+        credits: {
+            enabled: false
+        },
+
+        plotOptions: {
+            series: {
+              stacking: "normal"
+            },
+            column: {
+                // pointPadding: 0
+                // borderWidth: '1px'
+            }
+        },
+
+        exporting: {
+            enabled: false
+        },
+
+        series: [
+
+        {
+            name: 'SeeClickFix',
+            // data: [55, 30, 30, 25, 20, 15, 10],
+            data: [15, 10, 30, 25, 20, 55, 30],
+
+            stack: '2012',
+            color: '#FF9F83'
+        }, 
+        {
+            name: 'Traditional',
+            // data: [45, 70, 70, 75, 80, 85, 90],
+            data: [85, 90, 70, 75, 80, 45, 70],
+
+            stack: '2012',
+            color: '#2D4D57'
+        },
+        {
+            name: 'SeeClickFix',
+            // data: [40, 20, 25, 20, 10, 10, 10],
+            data: [10, 10, 25, 20, 10, 40, 20],
+
+            stack: '2011',
+            color: '#FF9F83'
+        }, 
+        {
+            name: 'Traditional',
+            // data: [60, 80, 75, 80, 90, 90, 90],
+            data: [90, 90, 75, 80, 90, 60, 80],
+
+            stack: '2011',
+            color: '#2D4D57'
+        }, 
+        {
+            name: 'SeeClickFix',
+            // data: [5, 15, 20, 15, 5, 10, 5],
+            data: [10, 5, 20, 15, 5, 5, 15],
+
+            stack: '2010',
+            color: '#FF9F83',
+        }, 
+        {
+            name: 'Traditional',
+            // data: [95, 85, 80, 85, 95, 90, 95],
+            data: [90, 95, 80, 85, 95, 95, 85],
+
+            stack: '2010',
+            color: '#2D4D57'
+        }
+
+        ]
+
+    });
+
+    $('#volume_bars').highcharts({
+        chart: {
+            type: 'bar',
+            // width: 560,
+            width: 460,
+
+            height: 300
+        },
+        title: {
+            text: null
+        },
+        // subtitle: {
+        //     text: 'Total number of maintenance requests'
+        // },
+        xAxis: {
+            // categories: [' '],
+            // categories: [
+            //     'Graffiti',
+            //     // 'Illegal Dumping',
+            //     'Street Sweeping',
+            //     'Street Lights',
+            //     'Drainage',
+            //     // 'Electrical',
+            //     'Road Repair',
+            //     // 'Building Maintenance',
+            //     'Vegetation Control',
+            //     'Survey'],
+
+
+            categories: [
+                'Vegetation Control',
+                'Survey',
+                'Street Lights',
+                'Drainage',
+                'Road Repair',
+                'Graffiti',
+                'Street Sweeping'
+                ],
+            lineColor: 'transparent',
+            tickColor: 'transparent',
+            title: {
+                text: null
+            },
+            labels: {
+                enabled: false
+            }
+        },
+        yAxis: {
+            min: 0,
+            max: 1200,
+            minorGridLineDashStyle: 'shortdot',
+            minorTickInterval: 100,
+
+            title: {
+                text: null
+            },
+            gridLineColor: 'transparent',
+            labels: {
+                enabled: true
+            },
+            opposite: true
+        },
+
+        tooltip: {
+            enabled: true,
+        },
+
+        legend: {
+            enabled: false,
+        },
+
+        credits: {
+            enabled: false
+        },
+
+
+        exporting: {
+            enabled: false
+        },
+
+        series: [
+        {
+            name: '2012',
+            // data: [1000,1100,100,400,900,50,50],
+            data: [50,50,100,400,900,1000,1100],
+            // data: [1100,1000,900,400,100,50,50],
+            color: '#83E3FF'
+        },
+        {
+            name: '2011',
+            // data: [900,1000,50,300,750,50,50],
+            data: [50,50,50,300,750,900,1000],
+            color: '#83E3FF'
+        }, 
+        {
+            name: '2010',
+            // data: [950,400,50,150,500,50,50],
+            data: [50,50,50,150,500,950,400],
+
+            color: '#83E3FF'
+        }, 
+        {
+            name: '2009',
+            // data: [100,100,50,50,400,50,50],
+            data: [50,50,50,50,400,100,100],
+            color: '#83E3FF'
+        }
+        ]
+
+    });
+
+    $('#top_3_percentage_bars').highcharts({
+        chart: {
+            type: 'bar',
+            width: 180,
+            height: 165
+        },
+        title: {
+            // text: 'SeeClickFix Adoption',
+            text: null
+        },
+        // subtitle: {
+        //     text: 'Percentage Share'
+        // },
+        xAxis: {
+
+            categories: [
+                'Electrical',
+                'Building Maintenance',
+                'Illegal Dumping'
+                ],
+            lineColor: 'transparent',
+            tickColor: 'transparent',
+            title: {
+                text: null
+            }
+        },
+        yAxis: {
+            min: 0,
+            max: 100,
+            minorTickInterval: 25,
+            minorGridLineDashStyle: 'shortdot',
+            // labels: {
+            //     step: 4
+            // },
+            // minorTickColor: "#FCFCFC",
+            // minorTickLength: 0,
+            title: {
+                text: null
+                // ,
+                // align: 'high'
+            },
+            gridLineColor: 'transparent',
+            labels: {
+                enabled: true
+            },
+            opposite: true 
+        },
+        tooltip: {
+            enabled: true,
+            valueSuffix: "%"
+            // valueSuffix: ' millions'
+        },
+        // plotOptions: {
+        //     bar: {
+        //         dataLabels: {
+        //             enabled: true
+        //         }
+        //     }
+        // },
+        legend: {
+            enabled: false,
+            // layout: 'vertical',
+            // align: 'right',
+            // verticalAlign: 'top',
+            // x: -40,
+            // y: 100,
+            // floating: true,
+            // borderWidth: 1,
+            // backgroundColor: ((Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'),
+            // shadow: true
+        },
+        credits: {
+            enabled: false
+        },
+
+        plotOptions: {
+            series: {
+              stacking: "normal"
+            },
+            column: {
+                // pointPadding: 0
+                // borderWidth: '1px'
+            }
+        },
+
+        exporting: {
+            enabled: false
+        },
+
+        series: [
+        {
+            name: 'SeeClickFix',
+            data: [20, 15, 45],
+            stack: '2012',
+            color: '#FF9F83'
+        }, 
+        {
+            name: 'Traditional',
+            data: [80, 85, 55],
+            stack: '2012',
+            color: '#2D4D57'
+        }, 
+        {
+            name: 'SeeClickFix',
+            data: [10, 10, 20],
+            stack: '2011',
+            color: '#FF9F83'
+        }, 
+        {
+            name: 'Traditional',
+            data: [90, 90, 80],
+            stack: '2011',
+            color: '#2D4D57'
+        }, 
+        {
+            name: 'SeeClickFix',
+            data: [5, 2, 10],
+            stack: '2010',
+            color: '#FF9F83',
+        }, 
+        {
+            name: 'Traditional',
+            data: [95, 98, 90],
+            stack: '2010',
+            color: '#2D4D57'
+        }
+
+        ]
+
+    });
+
+    $('#top_3_volume_bars').highcharts({
+        chart: {
+            type: 'bar',
+            // width: 560,
+            width: 460,
+
+            height: 165
+        },
+        title: {
+            text: null
+        },
+        // subtitle: {
+        //     text: 'Total requests'
+        // },
+        xAxis: {
+            categories: [
+                'Electrical',
+                'Building Maintenance',
+                'Illegal Dumping'
+                ],
+            lineColor: 'transparent',
+            tickColor: 'transparent',
+            title: {
+                text: null
+            },
+            labels: {
+                enabled: false
+            }
+
+        },
+        yAxis: {
+            min: 0,
+            max: 7200,
+            minorTickInterval: 1000,
+            minorGridLineDashStyle: 'shortdot',
+            title: {
+                text: null
+            },
+            gridLineColor: 'transparent',
+            labels: {
+                enabled: true
+            },
+            opposite: true
+
+        },
+
+        tooltip: {
+            enabled: true,
+        },
+
+        legend: {
+            enabled: false,
+        },
+
+        credits: {
+            enabled: false
+        },
+
+
+        exporting: {
+            enabled: false
+        },
+
+        series: [
+        {
+            name: '2012',
+            data: [3300,4500,7200],
+            color: '#0084AA'
+        },
+        {
+            name: '2011',
+            data: [3200,4000,6500],
+            color: '#0084AA'
+        }, 
+        {
+            name: '2010',
+            data: [3000,2400,5000],
+            color: '#0084AA'
+        }, 
+        {
+            name: '2009',
+            data: [1000,500,3000],
+            color: '#0084AA'
+        }
+        ]
+
+    });
+
+    $('#heatmap').highcharts({
+        
+        chart: {
+            type: 'heatmap',
+            // marginTop: 40,
+            // marginBottom: 40,
+            width: 130,
+            height: 440
+            // marginLeft: 140
+        },
+
+        exporting: {
+            enabled: false
+        },
+
+        title: {
+            // text: 'Average Days:'
+            text: null
+        },
+
+        xAxis: {
+            categories: [' '],
+
+        },
+
+        yAxis: {
+            categories: ['Drainage', 'Electrical', 'Illegal Dumping', 'Building Maintenance', 'Graffiti', 'Vegetation Control', 'Street Lights', 'Survey', 'Road Repair', 'Street Sweeping'],
+            title: null,
+            style: {
+                fontSize: '5px'
+            },
+            // showFirstLabel: false,
+            // showLastLabel: false
+        },
+
+        colorAxis: {
+            min: 0,
+            minColor: '#CCFFFF',
+            maxColor: '#CE6451'
+            // maxColor: '#FF3300'
+            // maxColor: Highcharts.getOptions().colors[0]
+        },
+
+        legend: {
+            align: 'right',
+            layout: 'vertical',
+            margin: 0,
+            verticalAlign: 'top',
+            y: 25,
+            symbolHeight: 320,
+            enabled: false
+        },
+
+        tooltip: {
+            enabled: false
+
+            // formatter: function () {
+            //     return '<b>' + this.series.xAxis.categories[this.point.x] + '</b> sold <br><b>' +
+            //         this.point.value + '</b> items on <br><b>' + this.series.yAxis.categories[this.point.y] + '</b>';
+            // }
+        },
+        credits: {
+            enabled: false
+        },
+
+        series: [{
+            // name: 'Sales per employee',
+            borderWidth: 1,
+            data: [
+                [0,0,50],
+                [0,1,20],
+                [0,2,15],
+                [0,3,10],
+                [0,4,7],
+                [0,5,5],
+                [0,6,5],
+                [0,7,1],
+                [0,8,1],
+                [0,9,1]
+                ],
+            dataLabels: {
+                enabled: true,
+                color: 'black',
+                style: {
+                    textShadow: 'none'
+                 }
+            },
+            states: {
+                hover: {
+                    enabled: false
+                }
+            }
+        }]  
+    });
+
+});
+
+</script>
+</body>
