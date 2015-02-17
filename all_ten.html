@@ -9,6 +9,13 @@
 </head>
 <body>
 
+<div id="legend_div" style="z-index:2;position:relative;left:340px;top:100px;">
+    <div id="legend_title" style="font-family:Trebuchet MS;text-indent:120px;">Legend</div>
+    <div id="legend_percentage" style="display:inline-block;vertical-align:top;"></div>
+    <div id="legend_volume" style="display:inline-block;"></div>
+</div>
+
+<div id="all_charts" style="z-index:1;vertical-align:top;position:relative;top:-100px;">
     <div id="main_charts">
         <div id="ten_bars_div" style="display:inline-block;vertical-align:top;">
             <div id="top_bigdiv" style="padding-left:10px;">
@@ -22,13 +29,12 @@
         </div>
         <div id="heatmap" style="display:inline-block;"></div>
     </div>
-    <span>Hello World</span>
     <div id="lower_charts">
-        <div id="lower_percentage" style="display:inline-block;">
-        </div>
-        <div id="yearly_totals" style="display:inline-block;">
-        </div>
+        <div id="lower_percentage" style="display:inline-block;vertical-align:top;"></div>
+        <div id="yearly_totals" style="display:inline-block;"></div>
     </div>
+</div>
+
 
 <script>
 $(function () {
@@ -36,13 +42,15 @@ $(function () {
         chart: {
             type: 'bar',
             width: 180,
-            height: 110,
+            height: 100,
+            spacingTop: 0,
+            spacingBottom: 0
         },
         title: {
             text: null
         },
         xAxis: {
-            categories: ['SeeClickFix Usage'],
+            categories: ['2010 \n2011 \n2012'],
             lineColor: 'transparent',
             tickColor: 'transparent',
             title: {
@@ -629,71 +637,96 @@ $(function () {
 
     });
     $('#yearly_totals').highcharts({
-    chart: {
-            type: 'bar',
-            width: 620,
-            height: 110,
-        },
-        title: {
-            text: null,
-            style: {
-                fontSize: '14px',
+        chart: {
+                type: 'bar',
+                width: 620,
+                height: 100,
+                spacingTop: 0,
+                spacingBottom: 0
+            },
+            title: {
+                text: null,
+                style: {
+                    fontSize: '14px',
+                }
+            },
+            xAxis: {
+
+                lineColor: 'transparent',
+                tickColor: 'transparent',
+                title: {
+                    text: null
+                },
+                labels: {
+                    enabled: false
+                },
+                // // categories: ['2009 \n2010 \n2011 \n2012'],
+
+            },
+
+            yAxis: {
+                min: 0,
+                max: 20000,
+                minorGridLineDashStyle: 'shortdot',
+                minorTickInterval: 2500,
+                // offset: 20,
+
+                title: {
+                    text: null
+                },
+                gridLineColor: 'transparent',
+                labels: {
+                    enabled: true
+                },
+                opposite: true
+            },
+
+            tooltip: {
+                enabled: true,
+            },
+
+            legend: {
+                enabled: false,
+            },
+
+            credits: {
+                enabled: false
+            },
+
+
+            exporting: {
+                enabled: false
+            },
+
+            plotOptions: {
+                grouping: false,
+                stacking: 'normal'
+            },
+
+            series: [
+            {
+                name: '2012',
+                data: [18600],
+                color: '#83E3FF'
+            },
+            {
+                name: '2011',
+                data: [16800],
+                color: '#83E3FF'
+            },
+            {
+                name: '2010',
+                data: [12500],
+                color: '#83E3FF'
+            },
+            {
+                name: '2009',
+                data: [5300],
+                color: '#83E3FF'
             }
-        },
-        xAxis: {
-            categories: ['2009','2010','2011','2012'],
-            lineColor: 'transparent',
-            tickColor: 'transparent',
-            title: {
-                text: null
-            },
-        },
-        yAxis: {
-            min: 0,
-            max: 20000,
-            minorGridLineDashStyle: 'shortdot',
-            minorTickInterval: 2500,
+            ]
+        });
 
-            title: {
-                text: null
-            },
-            gridLineColor: 'transparent',
-            labels: {
-                enabled: true
-            },
-            opposite: true
-        },
-
-        tooltip: {
-            enabled: true,
-        },
-
-        legend: {
-            enabled: false,
-        },
-
-        credits: {
-            enabled: false
-        },
-
-
-        exporting: {
-            enabled: false
-        },
-
-        plotOptions: {
-            grouping: false,
-            stacking: 'normal'
-        },
-
-        series: [
-        {
-            name: 'Requests',
-            data: [5300,12500,16800,18600],
-            color: '#83E3FF'
-        }
-        ]
-    });
     $('#heatmap').highcharts({
         
         chart: {
@@ -788,6 +821,205 @@ $(function () {
             }
         }]  
     });
+
+    $('#legend_percentage').highcharts({
+        chart: {
+            type: 'bar',
+            width: 130,
+            height: 120,
+            align: 'top',
+            backgroundColor: null
+        },
+        title: {
+            text: null
+        },
+        subtitle: {
+             text: 'Percentage',
+             y: 10,
+             floating: true
+        },
+        xAxis: {
+
+            lineColor: 'transparent',
+            tickColor: 'transparent',
+            // title: {
+            //     text: 'Graffti'
+            // },
+             labels: {
+                 enabled: true
+             },
+            categories: ['2010\n 2011\n 2012'],
+            offset: -5
+
+        },
+        yAxis: {
+            min: 0,
+            max: 100,
+            // minorTickInterval: 25,
+            // minorGridLineDashStyle: 'shortdot',
+             labels: {
+                 step: 4
+             },
+            offset: -15,
+            title: {
+                text: null
+
+            },
+
+            gridLineColor: 'transparent',
+            labels: {
+                enabled: true
+            }
+        },
+        tooltip: {
+            enabled: true,
+            valueSuffix: "%",
+            enabled: false
+
+        },
+
+        legend: {
+            enabled: false,
+
+        },
+        credits: {
+            enabled: false
+        },
+
+        plotOptions: {
+            series: {
+              fillOpacity: 0.0,
+              stacking: "normal"
+            },
+            column: {
+
+            }
+        },
+
+        exporting: {
+            enabled: false
+        },
+
+        series: [{
+            name: 'SeeClickFix',
+            data: [45],
+            stack: '2012',
+            color: '#FF9F83',
+        }, {
+            name: 'Traditional',
+            data: [55],
+            stack: '2012',
+            color: '#2D4D57'
+        }, {
+            name: 'SeeClickFix',
+            data: [30],
+            stack: '2011',
+            color: '#FF9F83'
+        }, {
+            name: 'Traditional',
+            data: [70],
+            stack: '2011',
+            color: '#2D4D57'
+        }, {
+            name: 'SeeClickFix',
+            data: [5],
+            stack: '2009',
+            color: '#FF9F83'
+        }, {
+            name: 'Traditional',
+            data: [95],
+            stack: '2009',
+            color: '#2D4D57'
+        }, 
+
+        ]
+    });
+
+    $('#legend_volume').highcharts({
+        chart: {
+            type: 'bar',
+            width: 160,
+            height: 135,
+            backgroundColor: null
+
+        },
+        title: {
+            text: null
+        },
+        subtitle: {
+             text: 'Total Requests',
+             y: 10,
+             floating: true
+        },
+
+        xAxis: {
+            categories: ['2009\n 2010\n 2011\n 2012'],
+
+            lineColor: 'transparent',
+            tickColor: 'transparent',
+            title: {
+                text: null
+            },
+            labels: {
+                enabled: true
+            }
+        },
+        yAxis: {
+            min: 0,
+            max: 1200,
+            // minorGridLineDashStyle: 'shortdot',
+            // minorTickInterval: 250,
+
+            title: {
+                text: null
+            },
+            gridLineColor: 'transparent',
+            labels: {
+                enabled: true
+            },
+            offset: -20
+        },
+
+        tooltip: {
+            enabled: false,
+        },
+
+        legend: {
+            enabled: false,
+        },
+
+        credits: {
+            enabled: false
+        },
+
+
+        exporting: {
+            enabled: false
+        },
+
+        series: [{
+            name: '2012',
+            data: [1800],
+            color: '#83E3FF'
+        }, 
+        {
+            name: '2011',
+            data: [1500],
+            color: '#83E3FF'
+        }, 
+        {
+            name: '2010',
+            data: [900],
+            color: '#83E3FF'
+        }, 
+        {
+            name: '2009',
+            data: [200],
+            color: '#83E3FF'
+        }]
+
+    });
+
 
 });
 
