@@ -20,9 +20,9 @@ $(function () {
     $('#percentage_bars').highcharts({
         chart: {
             type: 'bar',
-            width: 130,
-            height: 279,
-            align: 'top'
+            width: 170,
+            height: 300,
+            // align: 'top'
         },
         title: {
             // text: 'SeeClickFix Adoption',
@@ -71,6 +71,7 @@ $(function () {
             max: 100,
             minorTickInterval: 25,
             minorGridLineDashStyle: 'shortdot',
+            // showFirstLabel: false,
             // labels: {
             //     step: 4
             // },
@@ -83,8 +84,10 @@ $(function () {
             },
             gridLineColor: 'transparent',
             labels: {
-                enabled: false
-            }
+                enabled: true
+            },
+            opposite: true
+
         },
         tooltip: {
             enabled: true,
@@ -197,17 +200,28 @@ $(function () {
         // },
         xAxis: {
             // categories: [' '],
+            // categories: [
+            //     'Graffiti',
+            //     // 'Illegal Dumping',
+            //     'Street Sweeping',
+            //     'Street Lights',
+            //     'Drainage',
+            //     // 'Electrical',
+            //     'Road Repair',
+            //     // 'Building Maintenance',
+            //     'Vegetation Control',
+            //     'Survey'],
+
+
             categories: [
-                'Graffiti',
-                // 'Illegal Dumping',
-                'Street Sweeping',
+                'Vegetation Control',
+                'Survey',
                 'Street Lights',
                 'Drainage',
-                // 'Electrical',
                 'Road Repair',
-                // 'Building Maintenance',
-                'Vegetation Control',
-                'Survey'],
+                'Graffiti',
+                'Street Sweeping'
+                ],
             lineColor: 'transparent',
             tickColor: 'transparent',
             title: {
@@ -229,7 +243,8 @@ $(function () {
             gridLineColor: 'transparent',
             labels: {
                 enabled: true
-            }
+            },
+            opposite: true
         },
 
         tooltip: {
