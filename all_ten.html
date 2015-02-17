@@ -1,25 +1,29 @@
 <head>
     <meta charset="UTF-8" />
     <title>SCF!</title>
-    <link rel="stylesheet" href="scf.css">
-    <script src="_js/jquery-1.11.0.min.js"></script>
+    <link rel="stylesheet" href="VolumeChart/_css/main.css">
+    <script src="VolumeChart/_js/jquery-1.11.0.min.js"></script>
     <script src="http://code.highcharts.com/highcharts.js"></script>
     <script src="http://code.highcharts.com/modules/heatmap.js"></script>
     <script src="http://code.highcharts.com/modules/exporting.js"></script>
 </head>
 <body>
 
-<div id="ten_bars_div" style="display:inline-block;vertical-align:top;">
-    <div id="top_bigdiv" style="padding-left:10px;">
-        <div id="percentage_bars" style="display:inline-block;vertical-align:top;"></div>
-        <div id="volume_bars" style="display:inline-block;"></div>
+    <div id="main_charts">
+        <div id="ten_bars_div" style="display:inline-block;vertical-align:top;">
+            <div id="top_bigdiv" style="padding-left:10px;">
+                <div id="percentage_bars" style="display:inline-block;vertical-align:top;"></div>
+                <div id="volume_bars" style="display:inline-block;"></div>
+            </div>
+            <div id="bottom_bigdiv" style="margin-top: -20px;">
+                <div id="top_3_percentage_bars" style="display:inline-block;vertical-align:top;"></div>
+                <div id="top_3_volume_bars" style="display:inline-block;"></div>
+            </div>
+        </div>
+        <div id="heatmap" style="display:inline-block;"></div>
     </div>
-    <div id="bottom_bigdiv" style="margin-top: -20px;">
-        <div id="top_3_percentage_bars" style="display:inline-block;vertical-align:top;"></div>
-        <div id="top_3_volume_bars" style="display:inline-block;"></div>
+    <div id="yearly_totals">
     </div>
-</div>
-<div id="heatmap" style="display:inline-block;"></div>
 
 <script>
 $(function () {
@@ -520,6 +524,72 @@ $(function () {
         }
         ]
 
+    });
+    $('#yearly_totals').highcharts({
+        chart: {
+            type: 'bar',
+            width: 800,
+            height: 150,
+        },
+        title: {
+            text: 'Total Requests Per Year',
+            style: {
+                fontSize: '14px',
+            }
+        },
+        xAxis: {
+            categories: ['2009','2010','2011','2012'],
+            lineColor: 'transparent',
+            tickColor: 'transparent',
+            title: {
+                text: null
+            },
+        },
+        yAxis: {
+            min: 0,
+            max: 20000,
+            minorGridLineDashStyle: 'shortdot',
+            minorTickInterval: 2500,
+
+            title: {
+                text: null
+            },
+            gridLineColor: 'transparent',
+            labels: {
+                enabled: true
+            },
+            opposite: true
+        },
+
+        tooltip: {
+            enabled: true,
+        },
+
+        legend: {
+            enabled: false,
+        },
+
+        credits: {
+            enabled: false
+        },
+
+
+        exporting: {
+            enabled: false
+        },
+
+        plotOptions: {
+            grouping: false,
+            stacking: 'normal'
+        },
+
+        series: [
+        {
+            name: 'Requests',
+            data: [5300,12500,16800,18600],
+            color: '#83E3FF'
+        }
+        ]
     });
 
     $('#heatmap').highcharts({

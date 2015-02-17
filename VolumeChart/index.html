@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <head>
     <meta charset="UTF-8" />
-    <title>San Francisco Rainfall</title>
+    <title>Total Requests by Type</title>
     <link rel="stylesheet" href="_css/main.css">
     <script src="_js/jquery-1.11.0.min.js"></script>
     <script src="_js/highcharts.js"></script>
@@ -32,7 +32,7 @@ function colors(i) {
 var options = {
   chart: {
     renderTo: "container",
-    type: "column",
+    type: "bar",
     style: {
       fontFamily: "Helvetica,Arial,sans-serif"
     },
@@ -53,7 +53,7 @@ var options = {
   },
   series: [],
   title: {
-    text: "San Francisco Rainfall 2000-2015",
+    text: "Number of Requests by Type",
     style: {
       color: "#000000",
       fontFamily: "Helvetica,Arial,sans-serif",
@@ -98,7 +98,7 @@ var options = {
         color: "#333333",
         fontFamily: "Helvetica,Arial,sans-serif"
       },
-      text: "Inches of Rain"
+      text: "Number of Requests"
     }
   }
 }
@@ -173,6 +173,8 @@ $.get("_data/problem_total.csv", function (data) {
   
   // finally draw the chart by creating a new "Highcharts" object, which has settings that are defined in "options"
   var chart = new Highcharts.Chart(options);
+
+  chart.setSize(800,200);
 
 });
 
