@@ -22,16 +22,119 @@
         </div>
         <div id="heatmap" style="display:inline-block;"></div>
     </div>
-    <div id="yearly_totals">
+    <span>Hello World</span>
+    <div id="lower_charts">
+        <div id="lower_percentage" style="display:inline-block;">
+        </div>
+        <div id="yearly_totals" style="display:inline-block;">
+        </div>
     </div>
 
 <script>
 $(function () {
+    $('#lower_percentage').highcharts({
+        chart: {
+            type: 'bar',
+            width: 180,
+            height: 110,
+        },
+        title: {
+            text: null
+        },
+        xAxis: {
+            categories: ['SeeClickFix Usage'],
+            lineColor: 'transparent',
+            tickColor: 'transparent',
+            title: {
+                text: null
+            },
+        },
+        yAxis: {
+            min: 0,
+            max: 100,
+            minorTickInterval: 25,
+            minorGridLineDashStyle: 'shortdot',
+
+            title: {
+                text: null
+            },
+            gridLineColor: 'transparent',
+            labels: {
+                enabled: true
+            },
+            opposite: true
+        },
+        tooltip: {
+            enabled: true,
+            valueSuffix: "%"
+        },
+        legend: {
+            enabled: false,
+        },
+        credits: {
+            enabled: false,
+        },
+        exporting: {
+            enabled: false,
+        },
+        plotOptions: {
+            series: {
+              stacking: "normal"
+            },
+        },
+        series: [
+
+        {
+            name: 'SeeClickFix',
+            data: [31],
+
+            stack: '2012',
+            color: '#FF9F83'
+        }, 
+        {
+            name: 'Traditional',
+            data: [69],
+
+            stack: '2012',
+            color: '#2D4D57'
+        },
+        {
+            name: 'SeeClickFix',
+            data: [16],
+
+            stack: '2011',
+            color: '#FF9F83'
+        }, 
+        {
+            name: 'Traditional',
+            data: [84],
+
+            stack: '2011',
+            color: '#2D4D57'
+        }, 
+        {
+            name: 'SeeClickFix',
+            data: [7],
+
+            stack: '2010',
+            color: '#FF9F83',
+        }, 
+        {
+            name: 'Traditional',
+            data: [93],
+
+            stack: '2010',
+            color: '#2D4D57'
+        }
+
+        ]
+    });
+
     $('#percentage_bars').highcharts({
         chart: {
             type: 'bar',
             width: 170,
-            height: 300
+            height: 300,
             // align: 'top'
         },
         title: {
@@ -526,13 +629,13 @@ $(function () {
 
     });
     $('#yearly_totals').highcharts({
-        chart: {
+    chart: {
             type: 'bar',
-            width: 800,
-            height: 150,
+            width: 620,
+            height: 110,
         },
         title: {
-            text: 'Total Requests Per Year',
+            text: null,
             style: {
                 fontSize: '14px',
             }
@@ -591,7 +694,6 @@ $(function () {
         }
         ]
     });
-
     $('#heatmap').highcharts({
         
         chart: {
