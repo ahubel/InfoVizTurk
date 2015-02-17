@@ -1,0 +1,204 @@
+<head>
+    <meta charset="UTF-8" />
+    <title>SCF!</title>
+    <link rel="stylesheet" href="scf.css">
+    <script src="InfoVizTurk/VolumeChart/_js/jquery-1.11.0.min.js"></script>
+    <script src="http://code.highcharts.com/highcharts.js"></script>
+    <script src="http://code.highcharts.com/modules/heatmap.js"></script>
+    <script src="http://code.highcharts.com/modules/exporting.js"></script>
+</head>
+<body>
+
+
+<div id="bigdiv">
+    <div id="percentage_bars" style="display:inline-block;vertical-align:top;"></div>
+    <div id="volume_bars" style="display:inline-block;"></div>
+</div>
+
+<script>
+$(function () {
+    $('#percentage_bars').highcharts({
+        chart: {
+            type: 'bar',
+            width: 100,
+            height: 78,
+            align: 'top'
+        },
+        title: {
+
+            text: null
+        },
+
+        xAxis: {
+
+            lineColor: 'transparent',
+            tickColor: 'transparent',
+            title: {
+                text: 'Graffti'
+            },
+             labels: {
+                 enabled: false
+             }
+        },
+        yAxis: {
+            min: 0,
+            max: 100,
+            minorTickInterval: 25,
+            minorGridLineDashStyle: 'shortdot',
+             labels: {
+                 step: 4
+             },
+
+            title: {
+                text: null
+
+            },
+            gridLineColor: 'transparent',
+            labels: {
+                enabled: false
+            }
+        },
+        tooltip: {
+            enabled: true,
+            valueSuffix: "%"
+
+        },
+
+        legend: {
+            enabled: false,
+
+        },
+        credits: {
+            enabled: false
+        },
+
+        plotOptions: {
+            series: {
+              stacking: "normal"
+            },
+            column: {
+
+            }
+        },
+
+        exporting: {
+            enabled: false
+        },
+
+        series: [{
+            name: 'SeeClickFix',
+            data: [45],
+            stack: '2012',
+            color: '#83E3FF',
+        }, {
+            name: 'Traditional',
+            data: [55],
+            stack: '2012',
+            color: '#2D4D57'
+        }, {
+            name: 'SeeClickFix',
+            data: [30],
+            stack: '2011',
+            color: '#83E3FF'
+        }, {
+            name: 'Traditional',
+            data: [70],
+            stack: '2011',
+            color: '#2D4D57'
+        }, {
+            name: 'SeeClickFix',
+            data: [5],
+            stack: '2009',
+            color: '#83E3FF'
+        }, {
+            name: 'Traditional',
+            data: [95],
+            stack: '2009',
+            color: '#2D4D57'
+        }, 
+
+        ]
+
+    });
+
+     $('#volume_bars').highcharts({
+        chart: {
+            type: 'bar',
+            width: 100,
+            height: 100
+        },
+        title: {
+            text: null
+        },
+
+        xAxis: {
+            categories: [' '],
+
+            lineColor: 'transparent',
+            tickColor: 'transparent',
+            title: {
+                text: null
+            },
+            labels: {
+                enabled: false
+            }
+        },
+        yAxis: {
+            min: 0,
+            max: 1200,
+            minorGridLineDashStyle: 'shortdot',
+            minorTickInterval: 250,
+
+            title: {
+                text: null
+            },
+            gridLineColor: 'transparent',
+            labels: {
+                enabled: true
+            }
+        },
+
+        tooltip: {
+            enabled: true,
+        },
+
+        legend: {
+            enabled: false,
+        },
+
+        credits: {
+            enabled: false
+        },
+
+
+        exporting: {
+            enabled: false
+        },
+
+        series: [{
+            name: '2012',
+            data: [1800],
+            color: '#83E3FF'
+        }, 
+        {
+            name: '2011',
+            data: [1500],
+            color: '#83E3FF'
+        }, 
+        {
+            name: '2010',
+            data: [900],
+            color: '#83E3FF'
+        }, 
+        {
+            name: '2009',
+            data: [200],
+            color: '#83E3FF'
+        }]
+
+    });
+
+});
+
+</script>
+</body>
