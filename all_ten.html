@@ -9,7 +9,9 @@
 </head>
 <body>
 
-<div id="legend_div" style="z-index:2;position:relative;left:340px;top:140px;">
+<div id="SCF_legend" style="z-index:2;position:relative;top:280px;left:335px;"></div>
+
+<div id="legend_div" style="z-index:2;position:relative;left:340px;top:120px;">
     <div id="legend_title" style="font-family:Trebuchet MS;text-indent:120px;">Legend</div>
     <div id="legend_percentage" style="display:inline-block;vertical-align:top;"></div>
     <div id="legend_volume" style="display:inline-block;"></div>
@@ -42,6 +44,49 @@
 
 <script>
 $(function () {
+    $('#SCF_legend').highcharts({
+        chart: {
+            type: 'bar',
+            width: 200,
+            height: 100,
+            align: 'top',
+            marginTop: 140,
+            backgroundColor: null
+
+        },
+        title: {
+
+            text: null
+        },
+
+        legend: {
+            enabled: true,
+
+        },
+        credits: {
+            enabled: false
+        },
+
+        exporting: {
+            enabled: false
+        },
+
+        series: [{
+            name: 'SeeClickFix',
+            data: [45],
+            stack: '2012',
+            color: '#FF9F83',
+        }, {
+            name: 'Traditional',
+            data: [55],
+            stack: '2012',
+            color: '#2D4D57'
+        }, 
+        ]
+
+    });
+
+
     $('#lower_percentage').highcharts({
         chart: {
             type: 'bar',
