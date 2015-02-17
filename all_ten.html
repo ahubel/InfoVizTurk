@@ -9,13 +9,17 @@
 </head>
 <body>
 
-<div id="legend_div" style="z-index:2;position:relative;left:340px;top:100px;">
+<div id="legend_div" style="z-index:2;position:relative;left:340px;top:140px;">
     <div id="legend_title" style="font-family:Trebuchet MS;text-indent:120px;">Legend</div>
     <div id="legend_percentage" style="display:inline-block;vertical-align:top;"></div>
     <div id="legend_volume" style="display:inline-block;"></div>
 </div>
 
 <div id="all_charts" style="z-index:1;vertical-align:top;position:relative;top:-100px;">
+    
+    <div id="copy_text" style="width: 800px; text-align: center; font-family: Trebuchet MS;">The city of Springfield has adopted a new app – SeeClickFix – for residents to report repairs and problems from around the city.  The below visualization demonstrates how well it has performed from 2009-2012.</div>
+
+
     <div id="main_charts">
         <div id="ten_bars_div" style="display:inline-block;vertical-align:top;">
             <div id="top_bigdiv" style="padding-left:10px;">
@@ -30,7 +34,7 @@
         <div id="heatmap" style="display:inline-block;"></div>
     </div>
     <div id="lower_charts">
-        <div id="lower_percentage" style="display:inline-block;vertical-align:top;"></div>
+        <div id="lower_percentage" style="display:inline-block;vertical-align:top;width: 180px;"></div>
         <div id="yearly_totals" style="display:inline-block;"></div>
     </div>
 </div>
@@ -44,10 +48,14 @@ $(function () {
             width: 180,
             height: 100,
             spacingTop: 0,
-            spacingBottom: 0
+            spacingBottom: 0,
+            marginLeft: 50,
         },
         title: {
-            text: null
+            text: null,
+        },
+        subtitle: {
+            text: 'SCF % By Year'
         },
         xAxis: {
             categories: ['2010 \n2011 \n2012'],
@@ -56,6 +64,9 @@ $(function () {
             title: {
                 text: null
             },
+             labels: {
+                 enabled: false,
+             }
         },
         yAxis: {
             min: 0,
@@ -357,7 +368,8 @@ $(function () {
         chart: {
             type: 'bar',
             width: 180,
-            height: 165
+            height: 165,
+            spacingBottom:5,
         },
         title: {
             text: null
@@ -459,7 +471,8 @@ $(function () {
             // width: 560,
             width: 460,
 
-            height: 165
+            height: 165,
+            spacingBottom: 5,
         },
         title: {
             text: null
@@ -554,6 +567,9 @@ $(function () {
                     fontSize: '14px',
                 }
             },
+            subtitle: {
+                text: 'Total Reports By Year'
+            },
             xAxis: {
 
                 lineColor: 'transparent',
@@ -641,7 +657,9 @@ $(function () {
             height: 440
             // marginLeft: 140
         },
-
+        subtitle: {
+            text: 'Average Days till Close'
+        },
         exporting: {
             enabled: false
         },
